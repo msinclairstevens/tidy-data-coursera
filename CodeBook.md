@@ -1,21 +1,37 @@
 
+#The Tidy Data Set
+The tidy data set is a subset of the data found in: Human Activity Recognition Using Smartphones Dataset
+Version 1.0
+The original "messy" data can be retrieved from this URL: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+The version of the original data used to create this tidy data set was zipped on January 15, 2014 and downloaded on June 11, 2015 at 12:10 PM CDT. The actual original data files were created between October 10, 2012 and December 10, 2012.
 
+##The Messy Data
+The messy data contains observations of 30 subjects wearing a Samsung Galaxy smartphone recording 561 time and frequency measurements for six types of movement: walking, walking upstairs, walking downstairs, sitting, standing, and lying down.
 
-#Variables
-The dataset consists of 180 observations of 68 variables.
+#Variables: Overview
+The tidy data set consists of 180 observations of 68 variables.
+The Subject and Activity variables are primary and secondary keys.
+The 66 time and frequency variables hold the means of measurements take
 
-##Subject
+##Subject Variable
 The subjects of the test are identified by a ID number ranging from 1-30.
-Although the subjects were initially divided into two non-overlapping groups for observation, they were combined again to form this dataset. 
+Although the subjects were initially divided into two arbitrary, non-overlapping groups for observation, the data collected for each group was combined again to form this dataset. 
 
-##Activity
+##Activity Variable
 Six activities were observed. 
+1 WALKING
+2 WALKING_UPSTAIRS
+3 WALKING_DOWNSTAIRS
+4 SITTING
+5 STANDING
+6 LAYING
 
-##Features
-###Selection
+##Selected Time and Frequency Measurements
 The underlying data contained 561 time and frequency readings that were monitored for each activity for each subject.
-From this set, 66 variables focusing on mean or standard deviation of [?] were selected. 
-The selection excluded some variable with "mean" in the name: Freqmean and angle. The first, because we are interested only in means of [actual activity.] The second, because the angle already represent calculate fields [?]
+
+#Selection
+From this set, 66 variables focusing on mean or standard deviation of time and frequency measurements were selected. 
+The selection excluded some variable with "mean" in the name: Freqmean and angle. The first, because we are interested only in means of [actual activity.] The second, because the angle already represented calculate fields [?]
 
 Thus, this is the list of the 66 Features variables of interest.
 featureLabelsSelected
@@ -37,5 +53,26 @@ featureLabelsSelected
 [61] "fBodyGyro.std...Y"           "fBodyGyro.std...Z"           "fBodyAccMag.std.."           "fBodyBodyAccJerkMag.std.."  
 [65] "fBodyBodyGyroMag.std.."      "fBodyBodyGyroJerkMag.std.." 
 
-###Calculation
-Each [cell] row (observation) of the 66 Features-type  variables is a calculated value representing the mean value of that feature for a given activity and given subject.
+
+#Transformations
+##Variable Names: Subject Column
+1. The generated column name was replaced with an English label.
+For example: "V1" was replaced by "Subject".
+
+##Variable Names: Activity Column
+1. The generated column name was replaced with an English label.
+For example: "V1" was replaced by "Activity".
+
+##Variable Names (66 Observed Features)
+1. The generated column names were replaced with their English counterparts found in the file features.txt.
+For example: "V1" was replaced by "tBodyAcc-mean()-X"
+2. The English column names were then transformed into syntactically valid names with the function make.names().
+For example: "tBodyAcc-mean()-X" was replaced by "tBodyAcc-mean...X".
+3. To indicate that the value represented a calculated mean, rather than raw observations, the prefix "Mean: " was pasted to the front of the name.
+For example: "tBodyAcc-mean...X" was replace by "Mean..tBodyAcc-mean...X".
+
+#Calculations
+For each of the six activities for each of the 30 subjects, multiple measurements were recorded in the original data.
+For the purposes of this tidy data set, we were interested in the mean values of those measurements.
+1. For each of the 66 time or frequency columns, the mean for each activity by each subject was calculated and replaces the raw observations.
+2. Redundant data was removed from the resulting calculation of the mean with the function unique().
