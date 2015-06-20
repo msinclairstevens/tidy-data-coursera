@@ -1,9 +1,6 @@
-mycreatetidy <- function() {
-  #Check environment
+create.tidy <- function() {
+  # Source package dependencies.
   library(dplyr)
-  
-  # Check and set working directory.
-  getwd()
   
   # Task 1: Create a data set
   # Read untidy data files into R.
@@ -81,7 +78,7 @@ mycreatetidy <- function() {
     simplified <- unique(mutated)
     tidy <- inner_join(tidy, simplified)
   }
-  print(head(tidy))
+
   final1 <- unique(tidy)
   
   # Replace the numeric values of the activities with their corresponding English names.
