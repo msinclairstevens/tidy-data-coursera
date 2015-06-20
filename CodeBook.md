@@ -2,16 +2,19 @@
 #The Tidy Data Set
 The tidy data set is a subset of the data found in: Human Activity Recognition Using Smartphones Dataset
 Version 1.0
+
 The original "messy" data can be retrieved from this URL: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+###Download
 The version of the original data used to create this tidy data set was zipped on January 15, 2014 and downloaded on June 11, 2015 at 12:10 PM CDT. The actual original data files were created between October 10, 2012 and December 10, 2012.
 
-##The Messy Data
+##Summary Description: The Messy Data
 The messy data contains observations of 30 subjects wearing a Samsung Galaxy smartphone recording 561 time and frequency measurements for six types of movement: walking, walking upstairs, walking downstairs, sitting, standing, and lying down.
 
 #Variables: Overview
 The tidy data set consists of 180 observations of 68 variables.
 The Subject and Activity variables are primary and secondary keys.
-The 66 time and frequency variables hold the means of measurements take
+The 66 time and frequency variables hold the calculated means of measurements taken in the original study.
 
 ##Subject Variable
 The subjects of the test are identified by a ID number ranging from 1-30.
@@ -31,7 +34,7 @@ The underlying data contained 561 time and frequency readings that were monitore
 
 #Selection
 From this set, 66 variables focusing on mean or standard deviation of time and frequency measurements were selected. 
-The selection excluded some variable with "mean" in the name: Freqmean and angle. The first, because we are interested only in means of [actual activity.] The second, because the angle already represented calculate fields [?]
+The selection excluded some variables with "mean" in their names: Freqmean and angle. The first, because we are interested only in means of actual movement; Freqmean is already a calculated field representing the "weighted average of frequency components". The second, because the angle is a calculated field measuring the angle between two vectors.
 
 Thus, this is the list of the 66 Features variables of interest.
 featureLabelsSelected
@@ -74,5 +77,6 @@ For example: "tBodyAcc-mean...X" was replace by "Mean..tBodyAcc-mean...X".
 #Calculations
 For each of the six activities for each of the 30 subjects, multiple measurements were recorded in the original data.
 For the purposes of this tidy data set, we were interested in the mean values of those measurements.
+
 1. For each of the 66 time or frequency columns, the mean for each activity by each subject was calculated and replaces the raw observations.
 2. Redundant data was removed from the resulting calculation of the mean with the function unique().
