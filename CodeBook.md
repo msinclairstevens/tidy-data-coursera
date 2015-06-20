@@ -22,12 +22,12 @@ Although the subjects were initially divided into two arbitrary, non-overlapping
 
 ##Activity Variable
 Six activities were observed. 
-1 WALKING
-2 WALKING_UPSTAIRS
-3 WALKING_DOWNSTAIRS
-4 SITTING
-5 STANDING
-6 LAYING
+* 1 WALKING
+* 2 WALKING_UPSTAIRS
+* 3 WALKING_DOWNSTAIRS
+* 4 SITTING
+* 5 STANDING
+* 6 LAYING
 
 ##Selected Time and Frequency Measurements
 The underlying data contained 561 time and frequency readings that were monitored for each activity for each subject.
@@ -74,9 +74,20 @@ For example: "tBodyAcc-mean()-X" was replaced by "tBodyAcc-mean...X".
 3. To indicate that the value represented a calculated mean, rather than raw observations, the prefix "Mean: " was pasted to the front of the name.
 For example: "tBodyAcc-mean...X" was replace by "Mean..tBodyAcc-mean...X".
 
+##Values
+The numeric code for the Activity was replaced with its corresponding English label. 
+The activity_labels.txt file provided with the original data was used to perform a table lookup to do the replacement.
+* 1 WALKING
+* 2 WALKING_UPSTAIRS
+* 3 WALKING_DOWNSTAIRS
+* 4 SITTING
+* 5 STANDING
+* 6 LAYING
+
 #Calculations
 For each of the six activities for each of the 30 subjects, multiple measurements were recorded in the original data.
 For the purposes of this tidy data set, we were interested in the mean values of those measurements.
+
 
 1. For each of the 66 time or frequency columns, the mean for each activity by each subject was calculated and replaces the raw observations.
 2. Redundant data was removed from the resulting calculation of the mean with the function unique().
